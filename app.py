@@ -67,10 +67,10 @@ class TonewaveUI:
         btn_frame = ctk.CTkFrame(playlist_frame, fg_color="transparent")
         btn_frame.pack(pady=5)
         make_image_button(
-            btn_frame, "Gray/add-button.png", self.__add_tracks, size=(30, 30)
+            btn_frame, "gray/add_button.png", self.__add_tracks, size=(30, 30)
         ).pack(side="left", padx=5)
         make_image_button(
-            btn_frame, "Gray/clear-button.png", self.__clear_playlist, size=(30, 30)
+            btn_frame, "gray/clear_button.png", self.__clear_playlist, size=(30, 30)
         ).pack(side="left", padx=5)
 
         # Player Panel
@@ -82,7 +82,7 @@ class TonewaveUI:
         album_frame.pack_propagate(False)
         self.__album_frame = album_frame
 
-        no_art = load_ctk_image("Gray/no-album.png", size=(480, 250))
+        no_art = load_ctk_image("gray/no_album.png", size=(480, 250))
         self.__album_label = ctk.CTkLabel(
             album_frame, image=no_art, text="", width=480, height=250
         )
@@ -111,33 +111,33 @@ class TonewaveUI:
         ctrl_frame = ctk.CTkFrame(player_frame, fg_color="transparent")
         ctrl_frame.pack(pady=15)
 
-        self.__play_img  = load_ctk_image("Gray/play-button.png",  size=(play_sz, play_sz))
-        self.__pause_img = load_ctk_image("Gray/pause-button.png", size=(play_sz, play_sz))
+        self.__play_img  = load_ctk_image("gray/play_button.png",  size=(play_sz, play_sz))
+        self.__pause_img = load_ctk_image("gray/pause_button.png", size=(play_sz, play_sz))
         self.__loop_imgs = [
-            load_ctk_image("Gray/loop-off-button.png", size=(small, small)),
-            load_ctk_image("Gray/loop-all-button.png", size=(small, small)),
-            load_ctk_image("Gray/loop-one-button.png", size=(small, small)),
+            load_ctk_image("gray/loop_off_button.png", size=(small, small)),
+            load_ctk_image("gray/loop_all_button.png", size=(small, small)),
+            load_ctk_image("gray/loop_one_button.png", size=(small, small)),
         ]
 
-        make_image_ctkbutton(ctrl_frame, "Gray/shuffle-button.png",  player.shuffle,           size=(small, small)).grid(row=0, column=0, padx=5)
-        make_image_ctkbutton(ctrl_frame, "Gray/previous-button.png", player.prev_track,        size=(small, small)).grid(row=0, column=1, padx=5)
+        make_image_ctkbutton(ctrl_frame, "gray/shuffle_button.png",  player.shuffle,           size=(small, small)).grid(row=0, column=0, padx=5)
+        make_image_ctkbutton(ctrl_frame, "gray/previous_button.png", player.prev_track,        size=(small, small)).grid(row=0, column=1, padx=5)
 
         self.__play_pause_btn = make_image_ctkbutton(
-            ctrl_frame, "Gray/play-button.png", player.toggle_play_pause, size=(play_sz, play_sz)
+            ctrl_frame, "gray/play_button.png", player.toggle_play_pause, size=(play_sz, play_sz)
         )
         self.__play_pause_btn.grid(row=0, column=2, padx=10)
 
-        make_image_ctkbutton(ctrl_frame, "Gray/next-button.png", player.next_track, size=(small, small)).grid(row=0, column=3, padx=5)
+        make_image_ctkbutton(ctrl_frame, "gray/next_button.png", player.next_track, size=(small, small)).grid(row=0, column=3, padx=5)
 
         self.__loop_btn = make_image_ctkbutton(
-            ctrl_frame, "Gray/loop-off-button.png", player.toggle_loop, size=(small, small)
+            ctrl_frame, "gray/loop_off_button.png", player.toggle_loop, size=(small, small)
         )
         self.__loop_btn.grid(row=0, column=4, padx=5)
 
         # Volume Control
         vol_frame = ctk.CTkFrame(player_frame, fg_color="transparent")
         vol_frame.pack(pady=10)
-        make_image_ctkbutton(vol_frame, "Gray/speaker-button.png", None, size=(30, 30)).pack(side="left", padx=(0, 10))
+        make_image_ctkbutton(vol_frame, "gray/speaker_button.png", None, size=(30, 30)).pack(side="left", padx=(0, 10))
 
         self.__volume_var = ctk.DoubleVar(value=70)
         ctk.CTkSlider(
@@ -216,7 +216,7 @@ class TonewaveUI:
         fw = self.__album_frame.winfo_width()
         fh = self.__album_frame.winfo_height()
         art = extract_album_art(current_track) if current_track else None
-        img = art if art else Image.open(find_resource("Gray/no-album.png"))
+        img = art if art else Image.open(find_resource("gray/no_album.png"))
         ratio = min(fw / img.width, fh / img.height)
         img   = img.resize(
             (int(img.width * ratio), int(img.height * ratio)),
@@ -240,7 +240,7 @@ if __name__ == "__main__":
     root = ctk.CTk()
     root.geometry("800x650")
     root.title("Tonewave")
-    root.iconbitmap(resource_path("assets/Icon/music-app.ico"))
+    root.iconbitmap(resource_path("assets/icon/music_app.ico"))
 
     playlist_manager = PlaylistManager()
     track_state      = TrackState()
